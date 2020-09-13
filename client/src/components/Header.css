@@ -1,0 +1,41 @@
+.Header{
+    height: fit-content;
+    padding: 15px;
+    background-color: rgba(29, 31, 38, 0.5);
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    margin-top:0;
+}
+@media (max-width: 600px) {
+    .Header-title{
+        font-size: calc(10px + 2vmin);
+    }
+}
+.Header-logo {
+    height: 15vmin;
+    pointer-events: none;
+}
+.Header-title{
+    margin: 0;
+    font-size: calc(24px + 2vmin);
+}
+.Header-subtitle {
+    color: lightgray;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .Header-logo {
+        animation: Header-logo-spin infinite 20s linear;
+    }
+}
+@keyframes Header-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
