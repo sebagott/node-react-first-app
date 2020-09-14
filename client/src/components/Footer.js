@@ -10,7 +10,7 @@ export default class Footer extends Component {
             <Container fluid>
               <Row className="justify-content-center align-items-center mt-4">
                 <Col>
-                  <p> Website created by: <a className="App-link" href="https://github.com/sebagott">Sebastián Gálvez</a></p>
+                  <p> Website created by <a className="App-link" href="https://github.com/sebagott">Sebastián Gálvez</a></p>
                 </Col>
               </Row>
             </Container>

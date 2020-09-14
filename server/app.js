@@ -1,10 +1,14 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+var cors = require('cors');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+// Routers
 var indexRouter = require('./routes/index');
+var mountainsRouter = require('./routes/mountains')
+// DB
+var db = require('./models/index')
 
 var app = express();
 
@@ -18,7 +22,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Setup to accept CORS only from our Client Side (ReactJS)
+var whitelist = ['http://127.0.0.1:3000','http://localhost:3000'];
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+app.use(cors(corsOptions))
+
+// Routes
 app.use('/', indexRouter);
+app.use('/api/mountains', mountainsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -35,5 +55,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// DB Sync Creating Tables
+db.sequelize.sync(err => console.log(err))
 
 module.exports = app;
