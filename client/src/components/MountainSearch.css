@@ -1,0 +1,70 @@
+.SearchBar {
+    margin-bottom: 1vmin;
+    width: 100%;
+}
+.SearchBar__input{
+    width: 100%;
+    color:whitesmoke;
+    background-color: rgba(240, 240, 240, 0.3);
+    border-width: 0;
+    padding: 1vmin;
+    border-radius: 5px !important;
+    font-size: calc(8px + 1.2vmin);
+}
+.SearchBar__input::placeholder {
+    color:lightgray;
+    font-size: calc(8px + 1.2vmin);
+}
+.SearchBar__select {
+}
+ul.SearchBar__options {
+    list-style: none;
+    padding-left: 0;
+    background-color: rgb(29, 31, 38);
+}
+li.SearchBar__row {
+
+}
+li.SearchBar__row button{
+    text-align: left;
+}
+button.SearchBar__option{
+    padding:1vmin;
+    width: 100%;
+    font-size: calc(8px + 1.2vmin);
+    border:none;
+    background-color:  rgba(240, 240, 240, 0.8);
+}
+button.SearchBar__option:hover{
+    background-color:  rgba(240, 240, 240, 1.0);
+}
+
+.MountainSelected{
+    width:100%;
+    display: inline-flex;
+    color: black;
+    font-weight: bold;
+    background-color: rgba(248, 248, 255,0.8);
+    align-items: center;
+    padding: 1vmin;
+    border-radius: 1vmin;
+    font-size: 1.2rem;
+    margin-bottom: 2vmin;
+}
+.SelectedInfo {
+    width:95%;
+
+}
+.ResetButton{
+    font-size: xx-large;
+    font-weight: bold;
+    color: dimgray;
+    cursor: pointer;
+    position: relative;
+    right: 1rem;
+    margin-left: 3rem;
+}
+
+.ResetButton:hover {
+    color: darkgray;
+}

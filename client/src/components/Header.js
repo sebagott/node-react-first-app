@@ -3,42 +3,36 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import logo from '../logo.svg';
-import './Header.css'
-import SearchBar from "./SearchBar";
 import Button from "react-bootstrap/Button";
+import './Header.css'
+
+
 
 export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isStarted: false
+        isAppStarted: false
     }
-    this.handleStartButtonClick = this.handleStartButtonClick.bind(this);
+
   }
-  handleStartButtonClick(props){
-    this.setState({
-      isStarted: true
-    })
+  handleClick = () => {
+    this.props.startAppHandler();
+    this.setState({isAppStarted: true});
   }
-  startButton(props){
+
+  startButton = () => {
     return (
         <Row className="justify-content-center mb-4">
           <Col xs={8} md={2} className="text-center">
-            <Button variant="primary" className="btn-lg" onClick={this.handleStartButtonClick}>
+            <Button variant="primary" className="btn-lg" onClick={this.handleClick}>
               Start Here!
             </Button>
           </Col>
         </Row>
     )
   }
-  searchBar(props){
-    return (
-        <SearchBar
-            minQueryLength={4}
-            placeholder={"Search for a mountain by name (e.g. Cerro El Plomo)"}/>
-    )
-  }
-  render () {
+  render() {
     return (
         <header className="Header">
             <Container fluid>
@@ -51,9 +45,11 @@ export default class Header extends Component {
                 </Col>
               </Row>
               <Row className="justify-content-center mb-4">
-                <i as={Col} className="Header-subtitle">This app allows you to search for a mountain in our database and get a weather forecast for a specific date. </i>
+                <Col>
+                    <i className="Header-subtitle">{this.props.subtitle}</i>
+                </Col>
               </Row>
-              {((!this.state.isStarted) && this.startButton()) || this.searchBar()}
+              {((!this.state.isAppStarted) && this.startButton())}
             </Container>
         </header>
     )

@@ -13,10 +13,14 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
+    "node-fetch": "^2.6.1",
     "pg": "^8.3.3",
     "pg-hstore": "^2.3.3",
     "pug": "^3.0.0",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "csv-parser": "^2.3.3"
   }
 }
