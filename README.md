@@ -1,5 +1,8 @@
 # node-react-first-app
+
 ## First Node.js &amp; React.js App
+
+* Watch a demo here: https://www.youtube.com/watch?v=IB3fSDTaP5k* 
 
 The backend is an Express Node.js app acting as a REST API with a local PostgreSQL database accessed by asynchronous queries from the React application. 
 
