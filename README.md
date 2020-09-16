@@ -17,6 +17,7 @@ The front-end is a React.js application that uses 'react-bootstrap' for layout a
 
 - The packages 'react-leaflet' and 'leaflet' were used for the map component of the front-end.
 
+## Configuration
 
 You will need to add a `config` folder inside the `server` folder and create the following files:
  
