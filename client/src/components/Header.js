@@ -23,7 +23,7 @@ export default class Header extends Component {
 
   startButton = () => {
     return (
-        <Row className="justify-content-center mb-4">
+        <Row className="justify-content-center mb-3">
           <Col xs={8} md={2} className="text-center">
             <Button variant="primary" className="btn-lg" onClick={this.handleClick}>
               Start Here!
@@ -36,16 +36,16 @@ export default class Header extends Component {
     return (
         <header className="Header">
             <Container fluid>
-              <Row className="align-items-center mb-2">
+              <Row className="justify-content-center align-items-center mb-2">
                 <Col xs={12} md={2} className="text-right">
                   <img src={logo} className="Header-logo" alt="logo" />
                 </Col>
-                <Col xs={12} md={10} className="text-left">
+                <Col xs={12} md={7} className="text-left">
                   <h1 className="Header-title"> {this.props.title} </h1>
                 </Col>
               </Row>
-              <Row className="justify-content-center mb-4">
-                <Col>
+              <Row className="justify-content-center mb-3">
+                <Col xs={8}>
                     <i className="Header-subtitle">{this.props.subtitle}</i>
                 </Col>
               </Row>

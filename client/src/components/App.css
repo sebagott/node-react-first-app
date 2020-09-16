@@ -7,7 +7,7 @@
   height: 100%;
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 0 0 5vmin 0;
 }
 .App-link {
   color: #61dafb;
@@ -18,11 +18,23 @@
   font-weight: 500;
 }
 .AppContent {
-  padding: 5vmin;
-  width: 80%;
-  margin: 5vh auto 5vh auto;
+  padding: 3vmin;
+  width: 90%;
+  margin: 4vh auto 4vh auto;
   border-radius: 5vmin;
   color: white;
   background-color: rgba(29, 31, 38, 0.7);
 }
-
+.Map-container {
+  padding: 5vmin;
+}
+.leaflet-container {
+  min-height: 50vh;
+  border-radius: 15px;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+.leaflet-popup-content {
+  text-align: center;
+  font-size: small;
+}

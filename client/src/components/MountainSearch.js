@@ -37,7 +37,7 @@ class MountainSearch extends Component {
     }
     handleResetSearch = () => {
         this.setState({mountain:null});
-        this.props.onSelection(this.state.mountain);
+        this.props.onSelection(null);
     }
     renderOption = (props, option, snapshot, className) =>{
         return (
@@ -51,7 +51,7 @@ class MountainSearch extends Component {
             <Col xs={12}>
                 <div className="MountainSelected">
                     <span className="SelectedInfo">
-                        {`${this.state.mountain.name} (${this.state.mountain.altitude} m.a.s.l.) @ ${this.state.mountain.lat}°, ${this.state.mountain.lon}°` }
+                        {`${this.state.mountain.name} (${this.state.mountain.altitude} m.a.s.l.)` }
                     </span>
                     <span className="ResetButton" onClick={this.handleResetSearch}>&times;</span>
                 </div>

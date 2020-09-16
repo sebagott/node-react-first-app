@@ -18,6 +18,7 @@ class WeatherInfo extends Component {
             .then(response => response.json())
             .then((weatherInfo) => {
                 if(weatherInfo.cod === 200){
+                    console.log("Weather info", weatherInfo);
                     this.setState({
                         weatherInfo: weatherInfo
                     });
@@ -30,40 +31,53 @@ class WeatherInfo extends Component {
             .catch(error => console.log(error));
     }
     displayWeatherReport() {
+        const rotationStr = `rotate(${this.state.weatherInfo.wind.deg}deg)`;
+        const arrowStyleRotation = { transform: rotationStr, WebkitTransform: rotationStr }
         return (
-            <Container className="WeatherReport">
+            <Container fluid className="WeatherReport  h-100">
                 <h2> Weather Report </h2>
-                <Row className="justify-content-center">
-                    <Col>
-                        <div className="MainWeatherInfo">
+                <Row className="justify-content-between">
+                    <Col xs={12} md={6} className="MainWeatherInfo">
                             <img alt="Weather Icon" src={`http://openweathermap.org/img/wn/${this.state.weatherInfo.weather[0].icon}@4x.png`}/>
-                            <h3>{this.state.weatherInfo.weather[0].main} ({this.state.weatherInfo.weather[0].description})</h3>
-                            <h1 className="TemperatureInfo"> {`${Number.parseFloat(this.state.weatherInfo.main.temp -273).toFixed(1)} °C`}</h1>
-                            <label>{"Humidity:"}</label>
-                            <h3>{this.state.weatherInfo.main.humidity}%</h3>
-                        </div>
+                            <h2>{this.state.weatherInfo.weather[0].main}</h2>
+                            <h4>({this.state.weatherInfo.weather[0].description})</h4>
+                            <h1 className="TemperatureInfo"> <span>🌡</span>️ {`${Number.parseFloat(this.state.weatherInfo.main.temp).toFixed(1)} °C`}</h1>
                     </Col>
-                    <Col>
-                            <label>{"Wind:"}</label>
-                            <p>
-                                {`${JSON.stringify(this.state.weatherInfo.wind, null,4)}`}
-                            </p>
-                    </Col>
-                    <Col>
-                        <p>
-                            {`${JSON.stringify(this.state.weatherInfo.main, null,4)}`}
-                        </p>
-                    </Col>
-                </Row>
-                <Row className="justify-content-center">
+                    <Col xs={12} md={6} className="WeatherInfoVariables">
+                        <Row className="mt-1">
+                            <Col xs={12} md={2} className="align-self-start">{"Humidity: "}</Col>
+                            <Col>{this.state.weatherInfo.main.humidity}%</Col>
+                        </Row>
+                        <Row className="mt-3 align-items-center">
+                            <Col xs={12} md={2} className="align-self-start">{"Wind: "}</Col>
+                            <Col md={10}>
+                                <Row className="justify-content-center align-items-center">
+                                    <Col xs={10} className="text-right">{`${this.state.weatherInfo.wind.speed} m/s (${this.state.weatherInfo.wind.deg}°)`}</Col>
+                                    <Col xs={2} className="text-left">
+                                        <div className="windArrow">
+                                            <div className="arrow" style={arrowStyleRotation}/>
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </Col>
 
+                        </Row>
+                        <Row className="mt-3">
+                            <Col xs={12} md={2} className="align-self-start">{"Pressure: "}</Col>
+                            <Col> {`${this.state.weatherInfo.main.pressure} hPa`}</Col>
+                        </Row>
+                        <Row className="mt-3">
+                            <Col xs={12} md={2} className="align-self-start">{"Station: "}</Col>
+                            <Col> {`${this.state.weatherInfo.name}`}</Col>
+                        </Row>
+                    </Col>
                 </Row>
             </Container>
         )
     }
     render(){
         return (
-            <Row className="justify-content-center">
+            <Row className="justify-content-center align-items-center">
                 <Col xs={12}>
                     {this.state.weatherInfo && this.displayWeatherReport()}
                 </Col>

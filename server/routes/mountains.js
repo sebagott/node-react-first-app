@@ -3,10 +3,11 @@ var router = express.Router();
 var db = require('../models/index');
 const fetch = require('node-fetch');
 const Op = db.Sequelize.Op;
+const api_key_config = require('../config/api_key.json');
 
 function weatherAPIRequest(mountain){
-    const WEATHER_API_KEY = "3916afe1877a5215b68dd10f78ef07dc";
-    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${mountain.location.coordinates[0]}&lon=${mountain.location.coordinates[1]}&appid=${WEATHER_API_KEY}`;
+    const WEATHER_API_KEY = api_key_config["WEATHER_API_KEY"] || "";
+    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${mountain.location.coordinates[0]}&lon=${mountain.location.coordinates[1]}&appid=${WEATHER_API_KEY}&units=metric`;
     return fetch(url)
         .then(response => response.json())
         .then(data => {
